@@ -3,6 +3,9 @@ import datetime as dt
 
 from scrapper import events_of_the_day
 
+import codecs, string
+
+
 
 def date_range(start_date: dt.date, end_date: dt.date) -> Iterator[dt.date]:
     for n in range(int((end_date - start_date).days)):
@@ -21,10 +24,11 @@ def create_event_dict() -> Dict:
         events[month][date.day] = events_of_the_day(month, date.day)
     return events
 
-def create_event_dict_single_month(month:int) -> Dict:
+
+def create_event_dict_single_month(month: int) -> Dict:
     events = dict()
     start_date = dt.date(2020, month, 1)
-    end_date = dt.date(2020, month+1, 1)
+    end_date = dt.date(2020, month + 1, 1)
 
     for date in date_range(start_date, end_date):
         month = date.strftime("%B").lower()
