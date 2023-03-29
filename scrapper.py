@@ -2,7 +2,7 @@ import requests as rq
 import bs4 as BS4
 from typing import List
 from selenium import webdriver
-from langdetect import detect
+
 import requests
 from bs4 import BeautifulSoup
 from nltk import sent_tokenize
@@ -33,9 +33,6 @@ def get_all_links(url: str) -> List[str]:
 
 
 def check_all_textf(url: str) -> bool:
-    page = get_page(url)
-    raw_events = page.get_text()
-    lang = detect(raw_events)
     print(get_language_percentages(url))
     ratio = get_language_percentages(url)
     print(float(ratio.get("hinglish") + ratio.get("nepali")))
